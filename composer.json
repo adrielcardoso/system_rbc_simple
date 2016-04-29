@@ -1,0 +1,9 @@
+{
+    "name" : "Adriel Cardoso",
+    "require-dev": {},
+    "autoload": {
+        "classmap": [
+            "src"
+        ]
+    }
+}
