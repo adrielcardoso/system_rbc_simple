@@ -1,5 +1,7 @@
 <?php
 
+namespace Product\Data;
+
 class Data {
     
     public static function base(){

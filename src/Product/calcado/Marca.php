@@ -1,5 +1,7 @@
 <?php
 
+namespace Product\calcado;
+
 class Marca {
    
     const MARCA = '0,1';

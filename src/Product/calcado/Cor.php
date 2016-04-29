@@ -1,5 +1,7 @@
 <?php
 
+namespace Product\calcado;
+
 class Cor {
    
     const COR = '0,8';

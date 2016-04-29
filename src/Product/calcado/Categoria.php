@@ -1,5 +1,7 @@
 <?php
 
+namespace Product\calcado;
+
 class Categoria {
    
     const CATEGORIA = '1';
