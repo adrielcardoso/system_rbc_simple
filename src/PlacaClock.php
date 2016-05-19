@@ -2,7 +2,7 @@
 
 class PlacaClock{
 
-	public $marcas = [
+	public static $items = [
 		"4,7" => '1.024 MHz',
 		"5" => '1.127 MHz',
 		"4,8" => '1.050 MHz',
@@ -16,4 +16,13 @@ class PlacaClock{
 		"2" => '400 MHz',
 		"2,7" => '775 MHz',
 	];
+
+	public static function findWeight($namePlaca)
+	{
+		foreach (self::$items as $weight => $single) {
+			if(trim(strtolower($single)) == trim(strtolower($namePlaca))){
+				return $weight;
+			}
+		}
+	}
 }

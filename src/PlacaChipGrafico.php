@@ -1,10 +1,8 @@
 <?php 
 
-
-
 class PlacaChipGrafico{
 
-	public $marcas = [
+	public static $items = [
 		"4,4" => 'GeForce GTX 950',
 		"4,5" => 'GeForce GTX 960',
 		"4,7" => 'GeForce GTX 970',
@@ -20,5 +18,15 @@ class PlacaChipGrafico{
 		"2" => 'Radeon HD 8350',
 		"2,9" => 'Radeon HD 8470',
 	];
+
+
+	public static function findWeight($namePlaca)
+	{
+		foreach (self::$items as $weight => $single) {
+			if(trim(strtolower($single)) == trim(strtolower($namePlaca))){
+				return $weight;
+			}
+		}
+	}
 
 }

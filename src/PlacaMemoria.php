@@ -1,10 +1,12 @@
 <?php 
 
-class PlacaMarca{
+class PlacaMemoria{
 
 	public static $items = [
-		"3" => 'NVIDIA',
-		"2" => 'AMD',
+		"5" => '384 bits',
+		"4" => '256 bits',
+		"3" => '128 bits',
+		"2" => '64 bits',
 	];
 
 	public static function findWeight($namePlaca)
