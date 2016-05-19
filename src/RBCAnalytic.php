@@ -9,7 +9,14 @@ class RBCAnalytic{
 
 		$order = [];
 		foreach (Data::placas() as $single) {
-			array_push($order, self::parse($single, $placaEntrada));
+
+			$parse = self::parse($single, $placaEntrada);
+
+			if($parse['index'] > 2){
+				continue;
+			}
+
+			array_push($order, $parse);
 		}
 
 		return $order;
@@ -45,17 +52,30 @@ class RBCAnalytic{
 	 	$placaProcessador = PlacaProcessador::findWeight($placa[6]);
 	 	$placaProcessadorEntrada = PlacaProcessador::findWeight($placaEntrada[6]);
 
+	 	// print_r($placaMarca);die;
+	 	// print_r($catPlacaMarca * ($placaMarcaEntrada - $placaMarca));die;
+
+	 	// print_r((
+	 	// 			// index           // valorEntrada        // valorBase
+	 	// 			($catPlacaMarca * ($placaMarcaEntrada - $placaMarca)) +
+	 	// 			($catPlacaChipGrafico * ($placaChipGraficoEntrada - $placaChipGrafico)) +
+	 	// 			($catPlacaClock * ($placaClockEntrada - $placaClock)) +
+	 	// 			($catPlacaClockMemoria * ($placaClockMemoriaEntrada - $PlacaClockMemoria)) +
+	 	// 			($catPlacaMemoria * ($placaMemoriaEntrada - $PlacaMemoria)) +
+	 	// 			($catPlacaTaxaTrans * ($placaTaxaTransEntrada - $placaTaxaTrans)) + 
+	 	// 			($catPlacaProcessador * ($placaProcessadorEntrada - $placaProcessador))
+	 	// 	));die;
 
 	 	return [ 'index' => 
-	 	    abs((
+	 	     ((
 	 				// index           // valorEntrada        // valorBase
-	 				($catPlacaMarca + ($placaMarcaEntrada - $placaMarca)) +
-	 				($catPlacaChipGrafico + ($placaMarcaEntrada - $placaMarca)) +
-	 				($catPlacaClock + ($placaMarcaEntrada - $placaMarca)) +
-	 				($catPlacaClockMemoria + ($placaMarcaEntrada - $placaMarca)) +
-	 				($catPlacaMemoria + ($placaMarcaEntrada - $placaMarca)) +
-	 				($catPlacaTaxaTrans + ($placaMarcaEntrada - $placaMarca)) + 
-	 				($catPlacaProcessador + ($placaMarcaEntrada - $placaMarca))
+	 				($catPlacaMarca * ($placaMarcaEntrada - $placaMarca)) +
+	 				($catPlacaChipGrafico * ($placaChipGraficoEntrada - $placaChipGrafico)) +
+	 				($catPlacaClock * ($placaClockEntrada - $placaClock)) +
+	 				($catPlacaClockMemoria * ($placaClockMemoriaEntrada - $PlacaClockMemoria)) +
+	 				($catPlacaMemoria * ($placaMemoriaEntrada - $PlacaMemoria)) +
+	 				($catPlacaTaxaTrans * ($placaTaxaTransEntrada - $placaTaxaTrans)) + 
+	 				($catPlacaProcessador * ($placaProcessadorEntrada - $placaProcessador))
 	 		) / 
 	 		(
 	 			$catPlacaMarca +
