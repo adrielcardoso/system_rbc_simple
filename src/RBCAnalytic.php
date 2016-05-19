@@ -2,6 +2,7 @@
 
 class RBCAnalytic{
 
+	public static $final = 2;
 
 	public static function main($idPlaca)
 	{
@@ -12,7 +13,7 @@ class RBCAnalytic{
 
 			$parse = self::parse($single, $placaEntrada);
 
-			if($parse['index'] > 2){
+			if($parse['index'] > self::$final){
 				continue;
 			}
 
